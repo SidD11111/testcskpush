@@ -28,7 +28,7 @@ class Session extends React.Component {
         var calendar = e(Calendar, { dates: this.props.Dates })
         var calendarContainer = e("div", {
             style: {
-                backgroundColor: "white"
+                backgroundColor: "f8f8f8"
             }
         }, calendar)
 
@@ -37,29 +37,29 @@ class Session extends React.Component {
 
         var sections = this.props.Sections.split(",")
         var advancedSections = this.props.Advanced.split(",")
-        // for (var s = 0; s < sections.length; s++) {
-        //     let section = sections[s]
-        //     var children = []
-        //     let isWaitlist = false
-        //     var cap = parseInt(this.props.Capacity)
-        //     if (advancedSections.includes(sections[s])) {
-        //         cap *= 2
-        //     }
-        //     if (this.props.Registrations[sections[s]] >= cap) {
-        //         isWaitlist = true
-        //     }
-        //     //removes student signup buttons from the screen
+        for (var s = 0; s < sections.length; s++) {
+            let section = sections[s]
+            var children = []
+            let isWaitlist = false
+            var cap = parseInt(this.props.Capacity)
+            if (advancedSections.includes(sections[s])) {
+                cap *= 2
+            }
+            if (this.props.Registrations[sections[s]] >= cap) {
+                isWaitlist = true
+            }
+            //removes student signup buttons from the screen
 
-        //     var input = e("input", { type: "submit", disabled: !this.props.Open, className: "primary", value: `${isWaitlist ? 'Waitlist' : 'Register'} For ${section.length == 1 ? "Grade": "Grades"} ${section}`, onClick: () => this.register(section, isWaitlist) })
-        //     children.push(input)
+            var input = e("input", { type: "submit", disabled: !this.props.Open, className: "primary", value: `${isWaitlist ? 'Waitlist' : 'Register'} For ${section.length == 1 ? "Grade": "Grades"} ${section}`, onClick: () => this.register(section, isWaitlist) })
+            // children.push(input)
 
-        //     var listItem = e("li", {}, children)
-        //     registerButtons.push(listItem)
-        // }
+            var listItem = e("li", {}, children)
+            registerButtons.push(listItem)
+        }
 
         var children = []
         var input = e("input", { type: "submit", disabled: !this.props.Open, className: "primary", value: "Register your child!", onClick: () => window.location.href='http://parents.compscikids.net/' })
-        children.push(input)
+        // children.push(input)
 
         var listItem = e("li", {}, children)
         registerButtons.push(listItem)
