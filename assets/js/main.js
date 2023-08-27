@@ -3,50 +3,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-var slideIndex = Math.floor(Math.random() * 17);
-var time;
-// showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-	showSlides2(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-	showSlides2(slideIndex = n);
-}
-
-function showSlides2(n) {
-	var i;
-	var slides = document.getElementsByClassName("mySlides");
-	var dots = document.getElementsByClassName("dot");
-	if (n > slides.length) { slideIndex = 1 }
-	if (n < 1) { slideIndex = slides.length }
-	for (i = 0; i < slides.length; i++) {
-		slides[i].style.display = "none";
-	}
-	for (i = 0; i < dots.length; i++) {
-		dots[i].className = dots[i].className.replace(" active", "");
-	}
-	slides[slideIndex - 1].style.display = "block";
-	dots[slideIndex - 1].className += " active";
-	clearTimeout(time);
-	time = setTimeout(showSlides, 5000);
-}
-
-function showSlides() {
-	var i;
-	var slides = document.getElementsByClassName("mySlides");
-	for (i = 0; i < slides.length; i++) {
-		slides[i].style.display = "none";
-	}
-	slideIndex++;
-	if ((slideIndex) > slides.length) { slideIndex = 1 }
-	slides[slideIndex - 1].style.display = "block";
-	time = setTimeout(showSlides, 8000); // Change image every 2 seconds
-	// plusSlides(1)
-}
 
 (function ($) {
 
@@ -54,7 +10,7 @@ function showSlides() {
 		$body = $('body'),
 		$header = $('#header'),
 		$titleBar = null,
-		$nav = $('#nav'),
+		$nav = $('nav'),
 		$wrapper = $('#wrapper');
 
 	// Breakpoints.
@@ -166,13 +122,13 @@ function showSlides() {
 		});
 
 	// Title Bar.
-	$titleBar = $(
-		'<div id="titleBar">' +
-		'<a href="#header" class="toggle"></a>' +
-		'<span class="title">' + $('#logo').html() + '</span>' +
-		'</div>'
-	)
-		.appendTo($body);
+	// $titleBar = $(
+	// 	'<div id="titleBar">' +
+	// 	'<a href="#header" class="toggle"></a>' +
+	// 	'<span class="title">' + $('#logo').html() + '</span>' +
+	// 	'</div>'
+	// )
+	// 	.appendTo($body);
 
 	// Panel.
 	$header
@@ -190,14 +146,14 @@ function showSlides() {
 	// Scrolly.
 	$('.scrolly').scrolly({
 		speed: 1000,
-		offset: function () {
+		// offset: function () {
 
-			if (breakpoints.active('<=medium'))
-				return $titleBar.height();
+		// 	if (breakpoints.active('<=medium'))
+		// 		return $titleBar.height();
 
-			return 0;
+		// 	return 0;
 
-		}
+		// }
 	});
 
 })(jQuery);

@@ -5,7 +5,7 @@ var modal;
 $(document).click(function(e) {
 
     //shows a modal for a person
-    if(e.target.className == "face" || e.target.className == "personName") {
+    if(e.target.className == "btn personName" || e.target.className == "personName") {
         $(e.target).parent().find('.modal').css("display", "flex");
         modal = $(e.target).parent().find('.modal');
         setTimeout( function() {
